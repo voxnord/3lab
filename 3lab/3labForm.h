@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 namespace My3lab {
 
@@ -6,11 +6,12 @@ namespace My3lab {
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
+	using namespace System::IO;
 	using namespace System::Data;
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для My3labForm
+	/// РЎРІРѕРґРєР° РґР»СЏ My3labForm
 	/// </summary>
 	public ref class My3labForm : public System::Windows::Forms::Form
 	{
@@ -19,13 +20,13 @@ namespace My3lab {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~My3labForm()
 		{
@@ -39,7 +40,7 @@ namespace My3lab {
 
 	protected:
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ файлToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ С„Р°Р№Р»ToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ Open;
 
 	private: System::Windows::Forms::ToolStripMenuItem^ Save;
@@ -49,10 +50,14 @@ namespace My3lab {
 
 
 
-	private: System::Windows::Forms::ToolStripMenuItem^ дополнительноToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ количествоToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ повторениеToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ PercentCount;
+	private: System::Windows::Forms::ToolStripMenuItem^ RepeatCount;
+
+
 	private: System::Windows::Forms::TextBox^ TextBox;
+	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
+	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
 
 
 
@@ -62,27 +67,29 @@ namespace My3lab {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->файлToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->С„Р°Р№Р»ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->Open = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->Save = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SaveAs = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->Close = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->дополнительноToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->количествоToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->повторениеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->PercentCount = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->RepeatCount = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->TextBox = (gcnew System::Windows::Forms::TextBox());
+			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
+			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -91,8 +98,8 @@ namespace My3lab {
 			this->menuStrip1->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->файлToolStripMenuItem,
-					this->дополнительноToolStripMenuItem
+				this->С„Р°Р№Р»ToolStripMenuItem,
+					this->РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -100,62 +107,67 @@ namespace My3lab {
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
-			// файлToolStripMenuItem
+			// С„Р°Р№Р»ToolStripMenuItem
 			// 
-			this->файлToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->С„Р°Р№Р»ToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->Open,
 					this->Save, this->SaveAs, this->Close
 			});
-			this->файлToolStripMenuItem->Name = L"файлToolStripMenuItem";
-			this->файлToolStripMenuItem->Size = System::Drawing::Size(69, 29);
-			this->файлToolStripMenuItem->Text = L"Файл";
+			this->С„Р°Р№Р»ToolStripMenuItem->Name = L"С„Р°Р№Р»ToolStripMenuItem";
+			this->С„Р°Р№Р»ToolStripMenuItem->Size = System::Drawing::Size(69, 29);
+			this->С„Р°Р№Р»ToolStripMenuItem->Text = L"Р¤Р°Р№Р»";
 			// 
 			// Open
 			// 
 			this->Open->Name = L"Open";
 			this->Open->Size = System::Drawing::Size(232, 34);
-			this->Open->Text = L"Открыть";
+			this->Open->Text = L"РћС‚РєСЂС‹С‚СЊ";
 			this->Open->Click += gcnew System::EventHandler(this, &My3labForm::Open_Click);
 			// 
 			// Save
 			// 
 			this->Save->Name = L"Save";
 			this->Save->Size = System::Drawing::Size(232, 34);
-			this->Save->Text = L"Сохранить";
+			this->Save->Text = L"РЎРѕС…СЂР°РЅРёС‚СЊ";
+			this->Save->Click += gcnew System::EventHandler(this, &My3labForm::Save_Click);
 			// 
 			// SaveAs
 			// 
 			this->SaveAs->Name = L"SaveAs";
 			this->SaveAs->Size = System::Drawing::Size(232, 34);
-			this->SaveAs->Text = L"Сохранить как";
+			this->SaveAs->Text = L"РЎРѕС…СЂР°РЅРёС‚СЊ РєР°Рє";
+			this->SaveAs->Click += gcnew System::EventHandler(this, &My3labForm::SaveAs_Click);
 			// 
 			// Close
 			// 
 			this->Close->Name = L"Close";
 			this->Close->Size = System::Drawing::Size(232, 34);
-			this->Close->Text = L"Закрыть";
+			this->Close->Text = L"Р—Р°РєСЂС‹С‚СЊ";
+			this->Close->Click += gcnew System::EventHandler(this, &My3labForm::Close_Click);
 			// 
-			// дополнительноToolStripMenuItem
+			// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem
 			// 
-			this->дополнительноToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->количествоToolStripMenuItem,
-					this->повторениеToolStripMenuItem
+			this->РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->PercentCount,
+					this->RepeatCount
 			});
-			this->дополнительноToolStripMenuItem->Name = L"дополнительноToolStripMenuItem";
-			this->дополнительноToolStripMenuItem->Size = System::Drawing::Size(156, 29);
-			this->дополнительноToolStripMenuItem->Text = L"Дополнительно";
+			this->РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem->Name = L"РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem";
+			this->РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem->Size = System::Drawing::Size(156, 29);
+			this->РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕToolStripMenuItem->Text = L"Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ";
 			// 
-			// количествоToolStripMenuItem
+			// PercentCount
 			// 
-			this->количествоToolStripMenuItem->Name = L"количествоToolStripMenuItem";
-			this->количествоToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->количествоToolStripMenuItem->Text = L"Количество %";
+			this->PercentCount->Name = L"PercentCount";
+			this->PercentCount->Size = System::Drawing::Size(229, 34);
+			this->PercentCount->Text = L"РљРѕР»РёС‡РµСЃС‚РІРѕ %";
+			this->PercentCount->Click += gcnew System::EventHandler(this, &My3labForm::PercentCount_Click);
 			// 
-			// повторениеToolStripMenuItem
+			// RepeatCount
 			// 
-			this->повторениеToolStripMenuItem->Name = L"повторениеToolStripMenuItem";
-			this->повторениеToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->повторениеToolStripMenuItem->Text = L"Повторение";
+			this->RepeatCount->Name = L"RepeatCount";
+			this->RepeatCount->Size = System::Drawing::Size(229, 34);
+			this->RepeatCount->Text = L"РџРѕРІС‚РѕСЂРµРЅРёРµ";
+			this->RepeatCount->Click += gcnew System::EventHandler(this, &My3labForm::RepeatCount_Click);
 			// 
 			// TextBox
 			// 
@@ -164,6 +176,10 @@ namespace My3lab {
 			this->TextBox->Name = L"TextBox";
 			this->TextBox->Size = System::Drawing::Size(923, 577);
 			this->TextBox->TabIndex = 3;
+			/*// 
+			// openFileDialog РџСЂРё РѕС‚РєСЂС‹С‚РёРё РѕРєРЅР° РїСЂРѕРІРѕРґРЅРёРєР° РІ РїРѕР»Рµ РІРІРѕРґР° РІРІРѕРґРёС‚ С‚РµРєСЃС‚ РІ ""
+			// 
+			this->openFileDialog->FileName = L"РџР°СЃС…Р°Р»РєРѕ";*/
 			// 
 			// My3labForm
 			// 
@@ -176,6 +192,7 @@ namespace My3lab {
 			this->Name = L"My3labForm";
 			this->ShowIcon = false;
 			this->Text = L"Lab 3 - Text Editor";
+			this->Resize += gcnew System::EventHandler(this, &My3labForm::My3lab_Resize);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -184,16 +201,71 @@ namespace My3lab {
 		}
 #pragma endregion
 
-		// Масштабирование текстового поля
-		// Открытие файла
-		// Сохранение файла
-		// Сохранение файла как
-		// Закрытие программы
-		// Подсчёт %
-		// Повторение слов
+		void My3lab_Resize(System::Object^ sender, System::EventArgs^ e) // РњР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ С‚РµРєСЃС‚РѕРІРѕРіРѕ РїРѕР»СЏ
+		{
+			TextBox->Width = this->ClientSize.Width - 17;
+			TextBox->Height = this->ClientSize.Height - 32;
+		}
 
-private: System::Void Open_Click(System::Object^ sender, System::EventArgs^ e) 
-{
-}
+		private: System::Void Open_Click(System::Object^ sender, System::EventArgs^ e) // РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
+		{
+			openFileDialog->Filter = "All files (*.*)|*.*|txt files (*.txt)|*.txt|html file (*.html)|*.html|reg file (*.reg)|*.reg"; // Р’РёРґС‹ СЂР°СЃС€РёСЂРµРЅРёР№, РєРѕС‚РѕСЂС‹Рµ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ РІ РѕРєРЅРµ
+
+			if (openFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				String^ FilePath = openFileDialog->FileName;
+				TextBox->Text = File::ReadAllText(FilePath);
+			}
+		}
+
+		private: System::Void Save_Click(System::Object^ sender, System::EventArgs^ e) // РЎРѕС…СЂР°РЅРµРЅРёРµ С„Р°Р№Р»Р°
+		{
+			if (!String::IsNullOrEmpty(openFileDialog->FileName))
+			{
+				File::WriteAllText(openFileDialog->FileName, TextBox->Text);
+			}
+			else
+			{
+				SaveAs_Click(sender, e);
+			}
+		}
+
+		private: System::Void SaveAs_Click(System::Object^ sender, System::EventArgs^ e) // РЎРѕС…СЂР°РЅРµРЅРёРµ С„Р°Р№Р»Р° РєР°Рє
+		{
+			saveFileDialog->FileName = "TextFile"; // РР·РЅР°С‡Р°Р»СЊРЅРѕРµ РёРјСЏ РґР»СЏ С„Р°Р№Р»Р°
+			saveFileDialog->DefaultExt = "txt"; // Р Р°СЃС€РёСЂРµРЅРёРµ, РІ РєРѕС‚РѕСЂРѕРј СЃРѕС…СЂР°РЅСЏРµС‚СЃСЏ С„Р°Р№Р»
+			saveFileDialog->Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*|html file (*.html)|*.html|reg file (*.reg)|*.reg"; // Р’РёРґС‹ СЂР°СЃС€РёСЂРµРЅРёР№, РєРѕС‚РѕСЂС‹Рµ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ РІ РѕРєРЅРµ
+			/*saveFileDialog->FilterIndex = 2;
+			saveFileDialog->RestoreDirectory = true;*/
+
+			if (saveFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				String^ FilePath = saveFileDialog->FileName;
+				File::WriteAllText(saveFileDialog->FileName, TextBox->Text);
+			}
+
+		}
+
+		private: System::Void Close_Click(System::Object^ sender, System::EventArgs^ e) // Р—Р°РєСЂС‹С‚РёРµ РїСЂРѕРіСЂР°РјРјС‹
+		{
+			Application::Exit();
+		}
+
+		private: System::Void PercentCount_Click(System::Object^ sender, System::EventArgs^ e) // РџРѕРґСЃС‡С‘С‚ %
+		{
+
+		}
+
+		private: System::Void RepeatCount_Click(System::Object^ sender, System::EventArgs^ e) // РџРѕРІС‚РѕСЂРµРЅРёРµ СЃР»РѕРІ
+		{
+
+		}
+
+
+
+
+
+
+
 };
 }
