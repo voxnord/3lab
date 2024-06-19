@@ -296,15 +296,55 @@ namespace My3lab {
 
 		private: System::Void PercentCount_Click(System::Object^ sender, System::EventArgs^ e) // Подсчёт %
 		{
-			String^ pintext = this->TextBox->Text;
-			int count = 0;
-			char percent = '%';
+			String^ text = this->TextBox->Text;
+			int percentCount = 0;
+			for each (char c in text)
+			{
+				if (c == '%')
+				{
+					percentCount++;
+				}
+			}
 
+			// Выводим количество '%' в начало текста
+			String^ resultText = percentCount.ToString() + text;
+
+			// Устанавливаем результат в текстовое поле
+			TextBox->Text = resultText;
 		}
 
 		private: System::Void RepeatCount_Click(System::Object^ sender, System::EventArgs^ e) // Повторение слов
 		{
+			System::String^ text = this->TextBox->Text;
+			array<String^>^ words = text->Split(gcnew array<wchar_t>{ ' ', '\t', '\n', '\r', '.', ',', ';', '!', '?' }, StringSplitOptions::RemoveEmptyEntries);
 
+			// Создаем словарь для подсчета вхождений слов
+			System::Collections::Generic::Dictionary<String^, int>^ wordsCount = gcnew System::Collections::Generic::Dictionary<String^, int>();
+			// Подсчитываем количество каждого слова
+			for each (String ^ word in words)
+			{
+				// Приводим слово к нижнему регистру для учета регистра
+				word = word->ToLower();
+
+				if (wordsCount->ContainsKey(word))
+				{
+					wordsCount[word]++;
+				}
+				else
+				{
+					wordsCount->Add(word, 1);
+				}
+			}
+
+			// Формируем строку для вывода результата
+			System::Text::StringBuilder^ result = gcnew System::Text::StringBuilder();
+			for each (auto kvp in wordsCount)
+			{
+				result->AppendLine(String::Format("{0}: {1}", kvp.Key, kvp.Value));
+			}
+
+			// Выводим результат в текстовое поле или другое место
+			TextBox->Text = result->ToString();
 		}
 
 
