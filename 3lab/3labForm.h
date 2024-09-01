@@ -284,14 +284,7 @@ namespace My3lab {
 
 		private: System::Void Close_Click(System::Object^ sender, System::EventArgs^ e) // Закрытие программы
 		{
-			
-			System::Windows::Forms::DialogResult result = MessageBox::Show("Вы уверены, что хотите выйти?", "Выйти?", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-			if (result == System::Windows::Forms::DialogResult::Yes)
-			{
-				Application::Exit();
-			}
-			
+				Application::Exit();	
 		}
 
 		private: System::Void PercentCount_Click(System::Object^ sender, System::EventArgs^ e) // Подсчёт %
@@ -346,12 +339,6 @@ namespace My3lab {
 			// Выводим результат в текстовое поле или другое место
 			TextBox->Text = result->ToString();
 		}
-
-
-
-
-
-
 
 };
 }
